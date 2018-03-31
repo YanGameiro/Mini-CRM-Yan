@@ -11,17 +11,17 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/companies/create', 'CompaniesController@create');
-Route::get('/companies/edit', 'CompaniesController@edit');
-Route::get('/companies/destroy', 'CompaniesController@destroy');
 Route::get('/companies/index', 'CompaniesController@index');
-
 Route::post('/companies/store','CompaniesController@store');
+
+Route::get('/companies/{company}/edit', 'CompaniesController@edit');
+Route::get('/companies/{company}/destroy', 'CompaniesController@destroy');
+Route::post('/companies/{company}/update','CompaniesController@update');

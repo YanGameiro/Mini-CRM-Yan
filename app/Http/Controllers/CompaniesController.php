@@ -15,7 +15,8 @@ class CompaniesController extends Controller
 
     public function index()
     {
-        //
+        $allCompanies = Company::latest()->paginate(2);
+        return view('companies.index',compact('allCompanies'));
     }
 
     public function create()
@@ -42,25 +43,54 @@ class CompaniesController extends Controller
             'logo' => $img_name,
             'website' => request('website')
         ]);
+        return redirect('companies/index');
     }
+
+
 
     public function show($id)
     {
         //
     }
 
-    public function edit($id)
+    public function edit(Company $company)
     {
-        //
+        return view('companies.edit',compact('company'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Company $company)
     {
-        //
+        $this->validate(request(),[
+            'name' => 'required',
+            'email' => 'required',
+            'website' => 'required',
+            'logo' => 'image|dimensions:min_height=100,min_width=100'
+        ]);
+
+        if($request->logo != null){
+            $img_name = time().'.'.$request->logo->getClientOriginalExtension();
+            $request->logo->move(public_path('\storage/app/public'), $img_name);
+        
+            $company->update([
+                'name' => request('name'),
+                'email' => request('email'),
+                'logo' => $img_name,
+                'website' => request('website')
+            ]);
+        }
+        else{
+            $company->update([
+                'name' => request('name'),
+                'email' => request('email'),
+                'website' => request('website')
+            ]);
+        }
+        return redirect('companies/index');
     }
 
-    public function destroy($id)
+    public function destroy(Company $company)
     {
-        //
+        $company->delete();
+        return redirect('companies/index');    
     }
 }

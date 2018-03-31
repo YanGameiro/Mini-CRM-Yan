@@ -23,9 +23,9 @@
                         <input class="form-control" id="website" name="website" aria-describedby="website" placeholder="Enter website" >
                         
                     
-                    <button type="submit" class="btn btn-primary" style="margin-top:10px">Create</button>
-                    </div>
+                    <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px">Create</button>
                     @include ('errors')
+                    </div>
                 </form>
             </div>
         </div>
