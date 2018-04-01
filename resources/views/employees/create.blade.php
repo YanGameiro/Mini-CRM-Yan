@@ -17,7 +17,13 @@
                         <input class="form-control" id="last_name" name="last_name" aria-describedby="last name" placeholder="Enter last name" >
         
                         <label for="company_id">Company</label>
-                        <input class="form-control" id="company_id" name="company_id" aria-describedby="company" placeholder="Enter company" >
+                        <select name="company_id" class="form-control" id="company_id" aria-describedby="Company">
+                            <option selected disabled hidden>Choose one Company</option>
+                            @foreach ($allCompanies as $company)
+                                <option value="{{$company->id}}">{{$company->name}}</option>
+                            @endforeach
+                            
+                        </select>
 
                         <label for="email">Email address</label>
                         <input  class="form-control" id="email" name="email" aria-describedby="email" placeholder="Enter email" >

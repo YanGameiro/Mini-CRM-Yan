@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Employee as Employee;
+use App\Company as Company;
 
 class EmployeesController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function index()
     {
         //
@@ -14,7 +19,8 @@ class EmployeesController extends Controller
 
     public function create()
     {
-        return view('employees.create');
+        $allCompanies = Company::All();
+        return view('employees.create', compact('allCompanies'));
     }
 
     public function store(Request $request)
