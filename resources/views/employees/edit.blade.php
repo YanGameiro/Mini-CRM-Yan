@@ -33,8 +33,10 @@
         
                         <label for="phone">Phone number</label>
                         <input class="form-control" id="phone" name="phone" aria-describedby="phone" value="{{$employee->phone}}" >
-                    
-                    <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px">Edit</button>
+                        <div style="margin-top:10px">
+                                <button type="submit" class="btn btn-primary" >Edit</button>
+                                <a href="/employees/index" class="btn btn-danger">Cancel</button></a>
+                            </div>
                     @include ('errors')
                     </div>
                 </form>

@@ -8,7 +8,7 @@
                 <div class="card-header">Edit the company {{$company->name}}</div>
                 <form method="POST" action="/companies/{{$company->id}}/update" enctype="multipart/form-data">
                     {{ csrf_field() }}
-                    <div class="form-group" style="padding:20px">
+                    <div class="form-group" style="margin:20px;margin-bottom:0px">
         
                         <label for="name">Name</label>
                         <input class="form-control" id="name" name="name" aria-describedby="name" value="{{$company->name}}" >
@@ -21,12 +21,14 @@
                         
                         <label for="website">Website</label>
                         <input class="form-control" id="website" name="website" aria-describedby="website" value="{{$company->website}}" >
-                        
-                    
-                    <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px">Edit</button>
                     @include ('errors')
                     </div>
+                    <div style="margin:10px;margin-left:20px">
+                        <button type="submit" class="btn btn-primary" >Edit</button>
+                        <a href="/companies/index" class="btn btn-danger">Cancel</button></a>
+                    </div>
                 </form>
+                
             </div>
         </div>
     </div>
