@@ -25,3 +25,6 @@ Route::post('/companies/store','CompaniesController@store');
 Route::get('/companies/{company}/edit', 'CompaniesController@edit');
 Route::get('/companies/{company}/destroy', 'CompaniesController@destroy');
 Route::post('/companies/{company}/update','CompaniesController@update');
+
+Route::get('/employees/create', 'EmployeesController@create');
+Route::post('/employees/store', 'EmployeesController@store');
