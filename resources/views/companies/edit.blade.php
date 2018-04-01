@@ -23,7 +23,7 @@
                         <input class="form-control" id="website" name="website" aria-describedby="website" value="{{$company->website}}" >
                         
                     
-                    <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px">Create</button>
+                    <button type="submit" class="btn btn-primary" style="margin-top:10px; margin-bottom:10px">Edit</button>
                     @include ('errors')
                     </div>
                 </form>

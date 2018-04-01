@@ -11,10 +11,13 @@ class EmployeesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-    }
+    }   
+
     public function index()
     {
-        //
+        $allCompanies = Company::All();
+        $allEmployees = Employee::latest()->paginate(10);
+        return view('employees.index',compact('allEmployees','allCompanies'));
     }
 
     public function create()
@@ -40,7 +43,7 @@ class EmployeesController extends Controller
             'phone' => request('phone'),
             'company_id' => request('company_id'),
         ]);
-        return redirect('/employees/create');
+        return redirect('/employees/index');
     }
 
     public function show($id)
@@ -48,18 +51,35 @@ class EmployeesController extends Controller
         //
     }
 
-    public function edit($id)
+    public function edit(Employee $employee)
     {
-        //
+        $allCompanies = Company::All();
+        return view('employees.edit', compact('allCompanies','employee'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Employee $employee)
     {
-        //
+        $this->validate(request(),[
+            'first_name' => 'required',
+            'last_name' => 'required',
+            'email' => 'required',
+            'phone' => 'required',
+            'company_id' => 'required',
+        ]);
+
+        $employee->update([
+            'first_name' => request('first_name'),
+            'last_name' => request('last_name'),
+            'email' => request('email'),
+            'phone' => request('phone'),
+            'company_id' => request('company_id'),
+        ]);
+        return redirect('/employees/index');
     }
 
-    public function destroy($id)
+    public function destroy(Employee $employee)
     {
-        //
+        $employee->delete();
+        return redirect('employees/index'); 
     }
 }
