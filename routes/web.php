@@ -27,6 +27,10 @@ Route::post('/companies/store','CompaniesController@store');
 
 Route::get('/companies/{company}/edit', 'CompaniesController@edit');
 Route::get('/companies/{company}/destroy', 'CompaniesController@destroy');
+
+Route::get('/companies/{company}/logo','CompaniesController@logo');
+Route::get('/companies/{company}/getlogo','CompaniesController@getLogo');
+
 Route::post('/companies/{company}/update','CompaniesController@update');
 
 

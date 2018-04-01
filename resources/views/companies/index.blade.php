@@ -22,7 +22,12 @@
                             <tr>
                                 <td>{{$company->name}}</td>
                                 <td>{{$company->email}}</td>
-                                <td><img src="{{asset('/public/storage/1522495433.jpg')}}" alt="logo"></td>
+                                <td>
+                                    <!-- <img src="/companies/{{$company->id}}/getlogo" alt=""> -->
+                                    <a href="/companies/{{$company->id}}/logo">Open</a>
+                                     | 
+                                    <a href="/companies/{{$company->id}}/getlogo">Save</a>
+                                </td>
                                 <td>{{$company->website}}</td>
                                 <td>
                                     <a href="/companies/{{ $company->id }}/edit">

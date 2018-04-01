@@ -34,8 +34,9 @@ class CompaniesController extends Controller
         ]);
 
         $img_name = time().'.'.$request->logo->getClientOriginalExtension();
-        $path = Storage::putFileAs('/public',$request->logo,$img_name);
-
+        $path = Storage::putFileAs('',$request->logo,$img_name);
+        //$img = $request->logo;
+        //$img->save( public_path('/uploads/'.$img_name));
 
        Company::create([
             'name' => request('name'),
@@ -68,8 +69,10 @@ class CompaniesController extends Controller
         ]);
 
         if($request->logo != null){
+            //$img_name = time().'.'.$request->logo->getClientOriginalExtension();
+            //$request->logo->move(public_path('\storage/app/public'), $img_name);
             $img_name = time().'.'.$request->logo->getClientOriginalExtension();
-            $request->logo->move(public_path('\storage/app/public'), $img_name);
+            $path = Storage::putFileAs('',$request->logo,$img_name);
         
             $company->update([
                 'name' => request('name'),
@@ -92,5 +95,13 @@ class CompaniesController extends Controller
     {
         $company->delete();
         return redirect('companies/index');    
+    }
+
+    public function logo(Company $company){
+        return view('companies.logo', compact('company') );
+    }
+    public function getLogo(Company $company){
+        $img_name = $company->logo;
+        return response()->download(storage_path('app/public/'.$img_name),'logo-'.$company->name.'-'.$img_name);
     }
 }
