@@ -44,7 +44,20 @@
                             <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
                         @else
 
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                    {{ __('messages.language') }} <span class="caret"></span>
+                            </a>
+                            
 
+                            <ul class="dropdown-menu">
+                                    @foreach (Config::get('languages') as $lang => $language)
+                                            <li>
+                                                <a href="{{ route('lang.switch', $lang) }}" class="dropdown-item">{{$language}}</a>
+                                            </li>
+                                    @endforeach
+                                </ul>
+                        </li>
 
 
 
@@ -52,31 +65,31 @@
 
                         <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    Companies <span class="caret"></span>
+                                        {{ __('messages.companies') }} <span class="caret"></span>
                                 </a>
                                 
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/companies/index">
-                                        All
+                                        {{ __('messages.all2') }}
                                     </a>
                                     <a class="dropdown-item" href="/companies/create">
-                                        Create
+                                        {{ __('messages.create') }}
                                     </a>
                                 </div>
                             </li>
                             <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                        Employees <span class="caret"></span>
+                                            {{ __('messages.employees') }} <span class="caret"></span>
                                     </a>
                                     
     
                                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="/employees/index">
-                                            All
+                                            {{ __('messages.all') }}
                                         </a>
                                         <a class="dropdown-item" href="/employees/create">
-                                            Create
+                                            {{ __('messages.create') }}
                                         </a>
                                     </div>
                                 </li>

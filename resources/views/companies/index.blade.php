@@ -5,14 +5,14 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Companies: </div>
+                <div class="card-header">{{ __('messages.companies') }}</div>
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Name</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Logo</th>
-                            <th scope="col">website</th>
+                            <th scope="col">{{ __('messages.name') }}</th>
+                            <th scope="col">{{ __('messages.email') }}</th>
+                            <th scope="col">{{ __('messages.logo') }}</th>
+                            <th scope="col">{{ __('messages.website') }}</th>
                             <th scope="col"> </th>
                             <th scope="col"> </th>
                         </tr>
@@ -24,19 +24,19 @@
                                 <td>{{$company->email}}</td>
                                 <td>
                                     <!-- <img src="/companies/{{$company->id}}/getlogo" alt=""> -->
-                                    <a href="/companies/{{$company->id}}/logo">Open</a>
+                                    <a href="/companies/{{$company->id}}/logo">{{ __('messages.open') }}</a>
                                      | 
-                                    <a href="/companies/{{$company->id}}/getlogo">Save</a>
+                                    <a href="/companies/{{$company->id}}/getlogo">{{ __('messages.save') }}</a>
                                 </td>
                                 <td>{{$company->website}}</td>
                                 <td>
                                     <a href="/companies/{{ $company->id }}/edit">
-                                        <button  type="button" class="btn btn-warning">Edit</button>
+                                        <button  type="button" class="btn btn-warning">{{ __('messages.edit') }}</button>
                                     </a>
                                 </td>
                                 <td>
                                     <a href="/companies/{{ $company->id }}/destroy">
-                                        <button type="button" class="btn btn-danger">Delete</button>
+                                        <button type="button" class="btn btn-danger">{{ __('messages.delete') }}</button>
                                     </a>
                                 </td>
                             </tr>

@@ -5,12 +5,13 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Welcome!</div>
+                <div class="card-header">{{ __('messages.Welcome!') }}</div>
 
                 <div class="card-body">
-                    <p>You are logged in!</p>
-                    <p>Now you can create, edit, delete or see the Companies and the Employees.</p>
-                    <p>Just use the items on navegation bar.</p>
+                    <p>{{ __('messages.logged') }}</p>
+                    <p>{{ __('messages.can') }}</p>
+                    <p>{{ __('messages.navegation') }}</p>
+                    
                 </div>
             </div>
         </div>

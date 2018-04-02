@@ -43,3 +43,7 @@ Route::post('/employees/store', 'EmployeesController@store');
 Route::get('/employees/{employee}/edit', 'EmployeesController@edit');
 Route::get('/employees/{employee}/destroy', 'EmployeesController@destroy');
 Route::post('/employees/{employee}/update','EmployeesController@update');
+
+// Language
+
+Route::get('lang/{lang}', ['as'=>'lang.switch', 'uses'=>'LanguageController@switchLang']);
